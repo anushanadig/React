@@ -14,20 +14,35 @@ const onFormSubmit = (e) => {
 
     if(option) {
         app.options.push(option);
-        option='';
+        e.target.elements.option.value='';
     }
     renderElement();
 }
+
+const onDecide = () =>{
+
+    const index = Math.floor( Math.random() * app.options.length) ; 
+    alert(app.options[index]);
+    renderElement();
+}
+//wrong?
+// <ol>
+// <li>{app.options.forEach(opt=>console.log(opt))}</li>
+// {app.options.forEach(opt=><li>opt</li>)}
+// </ol>
+let count = 0;
 const renderElement = ()=>{
     const element = (
     <div>
         <h1>{app.title}</h1>
         <p>{app.options.length > 0 ? app.subtitle : "no options"}</p>
         <ol>
-            <li>{app.options.forEach(opt=>console.log(opt))}</li>
-            {app.options.forEach(opt=><li>opt</li>)}
-         </ol>
+        {
+            app.options.map(item => <li key={count++}>{item} </li> )
+        }
+        </ol>
 
+        <button onClick={onDecide}>decide</button>
          <form onSubmit={onFormSubmit}>
             <input type="text" name="option"/>
             <button>submit</button>
