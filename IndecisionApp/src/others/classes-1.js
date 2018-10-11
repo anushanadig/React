@@ -14,8 +14,24 @@ class Person {
   }
 }
 
+class Student extends Person {
+  constructor(name, age, dep = "cs") {
+    super(name, age);
+    this.dep = dep;
+  }
+
+  getDesc() {
+    return `${this.name} is ${this.age} old and is doing ${this.dep}`;
+  }
+
+  hasMajor() {
+    return !!this.dep;
+  }
+}
+
 const me = new Person("anusha");
 console.log(me);
 
-const other = new Person();
+const other = new Student();
 console.log(other.getDesc());
+console.log(other.hasMajor());
