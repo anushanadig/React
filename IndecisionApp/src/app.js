@@ -25,25 +25,88 @@ const onDecide = () => {
   renderElement();
 };
 
+class Header extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>{this.props.title}</h1>
+        <p>{this.props.subtitle}</p>
+      </div>
+    );
+  }
+}
+
+class Option extends React.Component {
+  render() {
+    return <div>option componentt here</div>;
+  }
+}
+
+class Options extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>{this.props.optionsList.length}</p>
+        {this.props.optionsList.map(opt => (
+          <p>{opt}</p>
+        ))}
+        <Option />
+      </div>
+    );
+  }
+}
+
+class Action extends React.Component {
+  render() {
+    return (
+      <div>
+        <button>what should i do?</button>
+      </div>
+    );
+  }
+}
+
+class AddOption extends React.Component {
+  render() {
+    return <div>add option component here</div>;
+  }
+}
+
+class IndecisionApp extends React.Component {
+  render() {
+    const title = "Indecision app";
+    const subtitle = "confused?";
+    const optionsList = ["one", "two"];
+    return (
+      <div>
+        <Header title={title} subtitle={subtitle} />
+        <Options optionsList={optionsList} />
+        <Action />
+        <AddOption />
+      </div>
+    );
+  }
+}
+
+// <div>
+// <Header />
+
+// <ol>
+//   {app.options.map(item => (
+//     <li key={count++}>{item} </li>
+//   ))}
+// </ol>
+
+// <button onClick={onDecide}>decide</button>
+// <form onSubmit={onFormSubmit}>
+//   <input type="text" name="option" />
+//   <button>submit</button>
+// </form>
+// </div>
+
 let count = 0;
 const renderElement = () => {
-  const element = (
-    <div>
-      <h1>{app.title}</h1>
-      <p>{app.options.length > 0 ? app.subtitle : "no options"}</p>
-      <ol>
-        {app.options.map(item => (
-          <li key={count++}>{item} </li>
-        ))}
-      </ol>
-
-      <button onClick={onDecide}>decide</button>
-      <form onSubmit={onFormSubmit}>
-        <input type="text" name="option" />
-        <button>submit</button>
-      </form>
-    </div>
-  );
+  const element = <IndecisionApp />;
 
   ReactDOM.render(element, document.getElementById("root"));
 };
