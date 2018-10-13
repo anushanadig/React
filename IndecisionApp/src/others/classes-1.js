@@ -35,3 +35,12 @@ console.log(me);
 const other = new Student();
 console.log(other.getDesc());
 console.log(other.hasMajor());
+
+function sayHi() {
+  this.greeting = "hello";
+  console.log("hghg");
+}
+
+sayHi();
+
+console.log(sayHi.greeting);
